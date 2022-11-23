@@ -44,6 +44,16 @@ public class ReportView {
     private String content;
 
     /**
+     * 出勤時刻
+     */
+    private String attendance;
+
+    /**
+     * 退勤時刻
+     */
+    private String leaving;
+
+    /**
      * 登録日時
      */
     private LocalDateTime createdAt;
