@@ -111,6 +111,8 @@ public class ReportAction extends ActionBase {
                     day,
                     getRequestParam(AttributeConst.REP_TITLE),
                     getRequestParam(AttributeConst.REP_CONTENT),
+                    getRequestParam(AttributeConst.REP_ATTENDANCE),
+                    getRequestParam(AttributeConst.REP_LEAVING),
                     null,
                     null);
 
@@ -207,6 +209,8 @@ public void update() throws ServletException, IOException {
         rv.setReportDate(toLocalDate(getRequestParam(AttributeConst.REP_DATE)));
         rv.setTitle(getRequestParam(AttributeConst.REP_TITLE));
         rv.setContent(getRequestParam(AttributeConst.REP_CONTENT));
+        rv.setAttendance(getRequestParam(AttributeConst.REP_ATTENDANCE));
+        rv.setLeaving(getRequestParam(AttributeConst.REP_LEAVING));
 
         //日報データを更新する
         List<String> errors = service.update(rv);
