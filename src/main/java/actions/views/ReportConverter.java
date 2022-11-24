@@ -1,16 +1,13 @@
 package actions.views;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import models.Report;
-
 /**
  * 日報データのDTOモデル⇔Viewモデルの変換を行うクラス
  *
  */
 public class ReportConverter {
-
     /**
      * ViewモデルのインスタンスからDTOモデルのインスタンスを作成する
      * @param rv ReportViewのインスタンス
@@ -23,29 +20,36 @@ public class ReportConverter {
                 rv.getReportDate(),
                 rv.getTitle(),
                 rv.getContent(),
+                rv.getAttendance(),
+                rv.getLeaving(),
                 rv.getCreatedAt(),
                 rv.getUpdatedAt());
-    }
 
+
+
+
+
+    }
     /**
      * DTOモデルのインスタンスからViewモデルのインスタンスを作成する
      * @param r Reportのインスタンス
      * @return ReportViewのインスタンス
      */
     public static ReportView toView(Report r) {
-
         if (r == null) {
             return null;
         }
-
         return new ReportView(
                 r.getId(),
                 EmployeeConverter.toView(r.getEmployee()),
                 r.getReportDate(),
                 r.getTitle(),
                 r.getContent(),
+                r.getAttendance(),
+                r.getLeaving(),
                 r.getCreatedAt(),
                 r.getUpdatedAt());
+
     }
 
     /**
@@ -55,14 +59,11 @@ public class ReportConverter {
      */
     public static List<ReportView> toViewList(List<Report> list) {
         List<ReportView> evs = new ArrayList<>();
-
         for (Report r : list) {
             evs.add(toView(r));
         }
-
         return evs;
     }
-
     /**
      * Viewモデルの全フィールドの内容をDTOモデルのフィールドにコピーする
      * @param r DTOモデル(コピー先)
@@ -74,9 +75,10 @@ public class ReportConverter {
         r.setReportDate(rv.getReportDate());
         r.setTitle(rv.getTitle());
         r.setContent(rv.getContent());
+        r.setAttendance(rv.getAttendance());
+        r.setLeaving(rv.getLeaving());
         r.setCreatedAt(rv.getCreatedAt());
         r.setUpdatedAt(rv.getUpdatedAt());
 
     }
-
 }
